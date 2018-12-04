@@ -1,15 +1,11 @@
-import numpy
+from sympy.ntheory import factorint
 
-def sieve(n):
-    total = numpy.ones(n, dtype=numpy.uint16)
-    for i in range(2, n):
-        if i % 2**16 == 0:
-            print(i)
-        if total[i] == 1:
-            total[i*i::i] += 1
-    return total#numpy.flatnonzero(total)
+tot = 0
+for i in range(2**21):
+    if i % 10**6 == 0:
+        print(i, tot)
+    count = len(factorint(i, limit = 512, multiple = True))
+    if count == 13:
+        tot += 1
 
-primes = sieve(2**32)
-unique, counts = numpy.unique(primes, return_counts=True)
-pfcounts = dict(zip(unique, counts))
-print(pfcounts)
+print(tot)
