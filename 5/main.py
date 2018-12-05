@@ -28,10 +28,8 @@ def convert(option):
 
 
 def main():
-    count = 0
-    for c in itertools.product("asn", repeat=14):
-        if convert(c) == 42:
-            count += 1
-            print(c, count)
+    possibilities = itertools.product("asn", repeat=14)
+    print(sum(map(lambda x: x == 42,
+                    map(convert, possibilities))))
 
 main()
