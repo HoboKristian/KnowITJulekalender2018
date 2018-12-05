@@ -16,15 +16,10 @@ def remove_n(option):
 
 
 def convert(option):
-    s = 0
     option = list(option)
     option.insert(0, "a")
-    for o, n in remove_n(option):
-        if o == "a":
-            s += n
-        elif o == "s":
-            s -= n
-    return s
+    pruned = remove_n(option)
+    return sum(map(lambda x: x[1] if x[0] == "a" else -x[1], pruned))
 
 
 def main():
