@@ -5,7 +5,6 @@ a,b,c = 0,0,0
 i = 0
 while i < len(txt):
     played = txt[i:i+3]
-    print(i, played)
     if played == "SPR" or played == "SRP" or played == "PSR" or played == "PRS" or played == "RSP" or played == "RPS" or played == "SSS" or played == "RRR" or played == "PPP":
         i += 3
     elif played == "SSR" or played == "RRP" or played == "PPS":
@@ -24,7 +23,6 @@ while i < len(txt):
             omkamp = txt[i:i+2]
             i += 2
             if omkamp == "SS" or omkamp == "RR" or omkamp == "PP":
-                print("error")
                 continue
             if omkamp == "RS" or omkamp == "PR" or omkamp == "SP":
                 a += 1
@@ -38,7 +36,6 @@ while i < len(txt):
             omkamp = txt[i:i+2]
             i += 2
             if omkamp == "SS" or omkamp == "RR" or omkamp == "PP":
-                print("error")
                 continue
             if omkamp == "RS" or omkamp == "PR" or omkamp == "SP":
                 a += 1
@@ -52,7 +49,6 @@ while i < len(txt):
             omkamp = txt[i:i+2]
             i += 2
             if omkamp == "SS" or omkamp == "RR" or omkamp == "PP":
-                print("error")
                 continue
             if omkamp == "RS" or omkamp == "PR" or omkamp == "SP":
                 b += 1
