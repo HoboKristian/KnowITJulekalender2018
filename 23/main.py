@@ -1,8 +1,6 @@
 def test(a, r):
     tmp = sum([int(c)*d for c,d in zip(a,r)]) % 11
-    if tmp == 0:
-        return 0
-    return 11 - tmp
+    return 0 if tmp == 0 else 11 - tmp
 
 def main():
     numbers = open("./input-fnr.txt").read().strip().split("\n")
