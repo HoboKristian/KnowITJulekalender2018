@@ -12,16 +12,9 @@ def main():
     count = 0
     valid_date = filter(lambda num: int(num[:2]) <= 31 and num[2:4] == "08", numbers)
     valid_female = filter(lambda num: int(num[8]) % 2 == 0, valid_date)
-    for num in valid_female:
-        k1 = test(num[:9], range1)
-        if k1 == 10 or str(k1) != num[9]:
-            continue
-        k2 = test(num[:9]+str(k1), range2)
-        if k2 == 10 or str(k2) != num[10]:
-            continue
-        count += 1
-        print(num)
-    print(count)
+    valid_k1 = filter(lambda num: str(test(num[:9], range1)) == num[9], valid_female)
+    valid_k2 = filter(lambda num: str(test(num[:10], range2)) == num[10], valid_k1)
+    print(len(list(valid_k2)))
 
 if __name__ == "__main__":
     main()
