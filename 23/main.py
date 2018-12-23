@@ -10,11 +10,11 @@ def main():
     range2 = [5,4,3,2,7,6,5,4,3,2]
 
     count = 0
-    valid_date = filter(lambda num: int(num[:2]) <= 31 and num[2:4] == "08", numbers)
-    valid_female = filter(lambda num: int(num[8]) % 2 == 0, valid_date)
-    valid_k1 = filter(lambda num: str(test(num[:9], range1)) == num[9], valid_female)
-    valid_k2 = filter(lambda num: str(test(num[:10], range2)) == num[10], valid_k1)
-    print(len(list(valid_k2)))
+    valid_date = [num for num in numbers if int(num[:2]) <= 31 and num[2:4] == "08"]
+    valid_female = [num for num in valid_date if not int(num[8]) % 2]
+    valid_k1 = [num for num in valid_female if str(test(num[:9], range1)) == num[9]]
+    valid_k2 = [num for num in valid_k1 if str(test(num[:10], range2)) == num[10]]
+    print(len(valid_k2))
 
 if __name__ == "__main__":
     main()
