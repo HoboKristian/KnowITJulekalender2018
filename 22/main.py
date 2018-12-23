@@ -1,17 +1,28 @@
+import math
+
 def s(elem):
     x, y = elem.split(",")
     return (float(x), float(y))
 
+def coord_to_polar(coord):
+    x, y = coord
+    rho = math.atan2(y, x)
+    return (x, y, rho)
+
 txt = open("./input-luke-22.txt").read().strip().split("\n")
-coords = list(map(s, txt))
+coords = map(s, txt)
+polars = map(coord_to_polar, coords)
 
-import numpy as np
-import matplotlib.pyplot as plt
+c = sorted(polars, key=lambda x: x[2])
 
-x = [a[0] for a in coords]
-y = [a[1] for a in coords]
+def dist(one, two):
+    x,y,_ = one
+    x2,y2,_ = two
+    return math.sqrt((x-x2)**2 + (y-y2)**2)
 
-plt.scatter(x, y)
-plt.show()
-# notice it is a circle with Radius = 1000.
-# length = 2000 * pi
+l = dist(c[-1], c[0])
+for i in range(1, len(c)):
+    l += dist(c[i-1], c[i])
+
+print(l)
+
